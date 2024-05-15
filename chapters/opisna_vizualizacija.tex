@@ -1,0 +1,24 @@
+\section{Opisna statistika in vizualizacija}
+
+\begin{multicols}{2}
+\noindent
+\textbf{Theory:}
+
+Data visualization is the graphic representation of data. It involves producing images that communicate relationships among the represented data to viewers of the images. Visualization makes it easier to detect patterns, trends, and outliers in groups of data.
+
+\columnbreak
+
+\textbf{Python Example:}
+
+\begin{verbatim}
+import seaborn as sns
+import pandas as pd
+
+# Load an example dataset
+data = sns.load_dataset("iris")
+
+# Create a pairplot
+sns.pairplot(data, hue="species")
+plt.show()
+\end{verbatim}
+\end{multicols}
