@@ -1,31 +1,165 @@
 \section{Uvod}
 
-Statistika je veda, ki...
+Statistika je veda, ki se ukvarja z zbiranjem, analiziranjem, interpretacijo, predstavitvijo in organizacijo podatkov. Izhaja iz \textit{statisticum} (državni), saj je prvotno označevala analizo podatkov o državi. Njene uporabe presegajo matematiko in je temeljno orodje za raziskovanje na vseh področjih znanosti. Pomembno je, da jo uporabljamo odgovorno in etično ter kritično ocenjujemo kontekst in vir statističnih informacij, da se izognemo napačnim interpretacijam in zavajanju (zgled zavajanja).
+
 
 \subsection*{Podatki in informacije}
 
+\textbf{Podatki} so niz vrednosti kvalitativnih spremenljivk.\\
+\textbf{Informacije} so obdelani in interpretirani podatki.\\
+Primer: temperatura po vsem svetu za zadnjih 100 let so podatki; analiza, ki ugotavlja, da globalna temperatura narašča, je informacija
+
+
 \subsection*{Enote opazovanja in Spremenljivke}
 
-\begin{multicols}{2}
-        \noindent
-        \textbf{Theory:}
+Enote opazovanja, za katere se zbirajo podatki, npr. oseba, gospodinjstvo, podjetje, izdelek, stavba, dogodek, država …
 
-Tipi spremenljivk glede na vrednost in glede na mersko lestvico
+Spremenljivka je katero koli značilno število ali količina, ki jo je mogoče izmeriti ali prešteti, na primer:
+\begin{itemize}
+\item Spol, starost, izobrazba, poklic, dohodek, narodnost … (za osebo)
+\item Število članov, vrsta, lastništvo stanovanja, dohodek, internetna povezava … (za gospodinjstvo)
+\item Število zaposlenih, lokacija, vrsta, sektor, prihodki … (za podjetje)
+\item Dimenzije, teža, starost, barva, temperatura, cena … (za izdelek)
+\item Dimenzije, lokacija, starost, lastništvo, materiali, cena … (za stavbo)
+\item Površina, prebivalstvo, število podjetij, politična ureditev … (za državo)
+\end{itemize}
 
-\columnbreak
+
+\subsection*{Tipi spremenljivk glede na vrednost in glede na mersko lestvico}
+
+\subsubsection*{Glede na vrednost}
+
+\textbf{Kategorične} (atributne) spremenljivke, npr. spol, izobrazba, barva, sektor, vrsta, regija
+
+\textbf{Številske} spremenljivke:
+\begin{itemize}
+\item Zvezne (lahko imajo poljubne vrednosti), npr. točna starost, dohodek, cena, dimenzije, dolžina, širina, trajanje …
+\item Diskretne (imajo le celoštevilske vrednosti), npr. letnica rojstva, velikost gospodinjstva, velikost podjetja, število udeležencev …
+\end{itemize}
+
+\subsubsection*{Glede na mersko lestvico}
+\begin{itemize}
+\item \textbf{Nominalne} spremenljivke: vrednosti se lahko razlikujejo le med seboj, razvrščanje ni možno, npr. spol, poklic, sektor, narodnost, regija …
+\item \textbf{Ordinalne} spremenljivke: vrednosti so lahko razvrščene od najmanjše do največje, vendar razdalje med vrednostmi niso znane, npr. izobrazba, šolska ocena, stopnja strinjanja, stopnja zadovoljstva, tesnoba …
+\item \textbf{Intervalne} spremenljivke: razlika med dvema vrednostma je smiselna, vendar ni dejanske ničelne vrednosti, je samo arbitrarna, npr. temperatura na lestvici Celzija, pH, koledarsko leto …
+\item \textbf{Razmernostne} spremenljivke: imajo edinstveno in nearbitrarno ničelno vrednost, zato lahko izračunamo tudi razmerja, npr. temperatura po Kelvinovi lestvici, starost, dolžina, širina, višina, teža, velikost razreda, število udeležencev dogodka, dohodek …
+\end{itemize}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|>{\raggedright}m{5cm}|c|c|c|c|}
+        \hline
+        \textbf{Kaj lahko izračunamo} & \textbf{Nominalna} & \textbf{Ordinalna} & \textbf{Intervalna} & \textbf{Razmernostna} \\
+        \hline
+        Frekvenčna porazdelitev & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        Modus & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        Vrsti red vrednosti & & \checkmark & \checkmark & \checkmark \\
+        \hline
+        Mediana & & \checkmark & \checkmark & \checkmark \\
+        \hline
+        Povprečje & & & \checkmark & \checkmark \\
+        \hline
+        Razlika med vrednostmi & & & \checkmark & \checkmark \\
+        \hline
+        Seštevanje in odštevanje & & & \checkmark & \checkmark \\
+        \hline
+        Množenje in deljenje & & & & \checkmark \\
+        \hline
+\end{tabular}
+\end{table}
 
 \textbf{Python Example:}
 
 \begin{verbatim}
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Generating random data
-data = np.random.normal(0, 1, 1000)
-
-# Plotting the data
-plt.hist(data, bins=30)
-plt.title("Histogram of Randomly Generated Data")
-plt.show()
+        # Import necessary libraries
+        import pandas as pd
+        
+        # Step 1: Read the CSV file
+        # Assume the CSV file is named 'data.csv' and located in the same directory as the script
+        df = pd.read_csv('data.csv')
+        
+        # Step 2: Print the first few rows of the dataframe
+        print("First few rows of the dataframe:")
+        print(df.head())
+        
+        # Step 3: Check the data types of each column
+        print("\nData types of each column:")
+        print(df.dtypes)
+        
+        # Step 4: Convert a specific column to float (if necessary)
+        # Let's assume we have a column named 'income' which we want to convert to float
+        df['income'] = df['income'].astype(float)
+        
+        # Verify the conversion
+        print("\nData types after conversion:")
+        print(df.dtypes)
+        
+        # Step 5: Calculate the range of data in a numeric column
+        # Let's calculate the range for the 'income' column
+        income_range = df['income'].max() - df['income'].min()
+        print("\nRange of the 'income' column:")
+        print(income_range)
+        
+        # Step 6: Label encoding for an ordinal categorical variable
+        # Let's assume we have an ordinal variable named 'education_level'
+        education_levels = {'High School': 1, 'Bachelor': 2, 'Master': 3, 'PhD': 4}
+        df['education_level'] = df['education_level'].map(education_levels)
+        
+        # Verify the encoding
+        print("\nData after label encoding 'education_level':")
+        print(df.head())
+        
+        # Step 7: One-hot encoding for a nominal categorical variable
+        # Let's assume we have a nominal variable named 'region'
+        df = pd.get_dummies(df, columns=['region'], prefix='region')
+        
+        # Verify the one-hot encoding
+        print("\nData after one-hot encoding 'region':")
+        print(df.head())
+        
+        # Additional Step: Descriptive statistics summary
+        print("\nDescriptive statistics of the dataframe:")
+        print(df.describe())
+        
+        # Save the modified dataframe to a new CSV file
+        df.to_csv('modified_data.csv', index=False)
+        
+        print("\nModified dataframe saved to 'modified_data.csv'.")        
 \end{verbatim}
-\end{multicols}
+
+\section*{Populacija in vzorec}
+
+\textbf{Populacija} se nanaša na skupni niz opazovanj; pomembno jo je prostorsko in časovno opredeliti, npr.
+\begin{itemize}
+\item študenti Univerze na Primorskem v študijskem letu 2023/2024
+\item javni vrtci v Obalno-Kraški regiji na 1. 9. 2023
+\item gledališke predstave v Sloveniji v tednu od 19. do 25. 2. 2024
+\item knjige izdane v EU v januarju 2024
+\end{itemize}
+\textbf{Vzorec} se nanaša na niz podatkov, izbranih iz statistične populacije po določenem postopku, npr.
+\begin{itemize}
+\item sistematični vzorec 400 študentov UP
+\item naključni vzorec 200 knjig
+\end{itemize}
+
+\section*{Vrste statistične analize}
+
+Glede na namen:
+Opisna (deduktivna) statistika: analiza in opis zbranih podatkov brez težnje po posploševanju teh podatkov izven njihovega obsega
+Inferenčna (induktivna) statistika: sklepanje iz vzorca na populacijo
+
+Glede na število sočasno analiziranih spremenljivk:
+Univariatna statistika: analiza ene spremenljivke
+Bivariatna statistika: analiza dveh spremenljivk, npr. hi-kvadrat, mere povezanosti, t-test, ANOVA, regresija, …
+Multivariatna statistika: analiza več spremenljivk, npr. multipla regresija, analiza glavnih komponent, faktorska analiza, diskriminantna analiza …
+
+\section*{Koraki statistične analize}
+
+Določitev vsebine in namena statistične študije, opredelitev objekta (enota in populacija) in vsebino opazovanja (spremenljivke)
+Statistično opazovanje (celotne populacije ali vzorca)
+Enostavna obdelava (urejanje, soritranje podatkov in izračun osnovnih karakteristik)
+Analitična obravnava
+
+\section*{Vaje}
