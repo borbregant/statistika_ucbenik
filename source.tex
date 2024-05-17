@@ -1,12 +1,28 @@
 \documentclass[11pt]{book}
-\usepackage{geometry}
+\usepackage[a4paper, margin=1in]{geometry} % Standardized margin setup
 \usepackage{multicol}
 \usepackage{lipsum}
 \usepackage{array}
 \usepackage{comment}
 \usepackage{amssymb}
-%\usepackage{jupynotex}   Deluje z minted paketom
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{fancyhdr} % for more elaborate header/footer configurations
+\setlength{\headheight}{14pt} % slightly more than required
+\addtolength{\topmargin}{-2pt}
+\usepackage{graphicx} % to include graphics
+\usepackage{titlesec} % to customize chapter titles etc.
+%\usepackage{palatino} % a more readable font than the default
 
+% Custom chapter title formatting
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{30pt}{20pt}
+
+% Environment for exercises, renamed to "Exercise" for English context
+\newenvironment{Vaje}[1]
+{\par\medskip\noindent\textbf{Vaja #1}\par\noindent\begin{quote}}
+{\end{quote}\par\medskip}
 
 \geometry{
   top=1in,
@@ -15,13 +31,30 @@
   right=1in
 }
 
-\title{Statistika}
+% Header and footer configuration
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyhead[LE,RO]{\slshape \rightmark} % section number and title
+\fancyhead[LO,RE]{\slshape \leftmark} % chapter number and title
+\fancyfoot[C]{\thepage} % center footer
+
+% Redefine the plain page style for chapters
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+\title{\Huge \textbf{Statistics}}
 \author{Bor Bregant}
+\date{\today}
 
 \begin{document}
+\frontmatter
 \maketitle
 \tableofcontents
 
+\mainmatter
 \include{chapters/uvod.tex}
 \include{chapters/opisna_vizualizacija.tex}
 \include{chapters/inferencna.tex}
