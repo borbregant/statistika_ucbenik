@@ -4,24 +4,23 @@ Metode sklepanja iz vzorca na populacijo. Uporabljamo teorijo verjetnosti, da oc
 
 \subsection*{Vzorčenje}
 
-Je postopek izbire dela populacije, ki jo vključimo v raziskavo.
+Je postopek izbire dela populacije, ki jo vključimo v raziskavo. Enote, ki so že izbrane pogosto ne vračamo v populacijo, če pa je velikost vzorca majhna, lahko to naredimo.
 
 \subsubsection*{Metode vzorčenja}
 \begin{itemize}
     \item \textbf{Verjetnostni vzorci}: Vsaka enota v populaciji ima znano neničelno verjetnost, da bo vključena v vzorec.
     \begin{itemize}
-        \item Enostavno slučajno vzorčenje
-        \item Sistematično vzorčenje
-        \item Stratificirano vzorčenje
-        \item Vzorčenje v skupinah
+        \item \textit{Enostavno slučajno vzorčenje:} Vsaka enota ima enako in znano verjetnost izbire, ki ni enaka nič, notej so vsi možni vzorci enako verjetni. Primer: Z računalnikom naključno ustvarimo vzorec 100 dijakov, vpisanih na neko šolo v šolskem leti 2025/26 na podlagi seznama dijakov.
+        \item \textit{Sistematično vzorčenje:} Iz vzorčnega okvirja vzamemo vsako $k$-to enoto. Vsaka enota ima enako verjetnost, da je izbrana v populacijo, toda vsi vzorci niso enako verjetni (npr. ne moremo hkrati izbrati četrte in pete enote, torej vzorčenje ni enostavno). Primer: Na podlagi seznama dijakov šole, ki je urejen po abecedi izberemo vsako deseto enoto. Naključno izberemo le prvo enoto npr. 2 in nadaljujemo z 12, 22, ....
+        \item \textit{Stratificirano vzorčenje}: Popualcijo stratificiramo na podlagi vnaprej znanih informacij in nato izvedemo vzorčenje za vsak stratum posebej. Primer: Če ima šola 70\% dijakov in 30\% dijakinj, lahko vzamemo v vzorec enote proporcionalno glede na spol.
+        \item \textit{Vzorčenje v skupinah}: Enote v populaciji so pogosto združene v skupinah, npr. učenci v razrede, razredi v šole, šole v države, itd. Tako lahko najprej izberemo vzorec skupin (npr. razredov) in naprej na temu vzorcu vzorčimo naprej. Primer: Na univerzi izberemo 5 od 15 programov in za vsakega od teh slučajno izberemo vzorec 100 študentov.
     \end{itemize}
     \item \textbf{Neverjetnostni vzorci}: Verjetnosti izbir ne moremo izračunati.
     \begin{itemize}
-        \item Priložnostni vzorci
+        \item \textit{Priložnostni vzorci}: Primer: Državljanom pošljemo 1 milijon vprašalnikov. (slabo)
         \item Ekspertna izbira
-        \item Kvotno vzorčenje
+        \item \textit{Kvotno vzorčenje}: Primer: Med vzorčenjem nadziramo demografske značilnosti vzorca.
     \end{itemize}
+    Nauk: Velikost vzorca ni vse. Pomembnejša je njegova reprezentativnost. V idealni situaciji bi uporabljali verjetnostno vzorčenje. Ko to ni možno, je kvotno vzorčenje boljša izbira kot priložnostno.\\
+    Natančnost in točnost s sliko. (precision, accuracy)
 \end{itemize}
-
-Enostavno slučajno vzorčenje:
-...
