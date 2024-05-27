@@ -25,6 +25,16 @@ Je postopek izbire dela populacije, ki jo vključimo v raziskavo. Enote, ki so �
     Natančnost in točnost s sliko. (precision, accuracy)
 \end{itemize}
 
+\subsubsection*{Velikost vzorca}
+
+Standardna napaka statistike je odvisna od velikosti vzorca.\\
+
+Velikost vzorca za ocenjevanje aritmetične sredine navadno zahtevamo:
+
+\[n>\left(\frac{z_{\frac{\alpha}{2}}\cdot\sigma}{E}\right)^2,\]
+
+kjer $E$ označuje smiselno razliko med opazovanimi vrednostmi (navadno 1)
+
 nekej nekej statistika
 
 \subsection*{Intervali zaupanja}
@@ -55,3 +65,55 @@ Primer: Raziskovalno vprašanje: Ali obstajajo razlike med spoloma v matematičn
 Hipoteza: Ženske imajo več matematične anksionosti kot moški ($H_0: \mu_z - \mu_m >0$).
 
 Opomba: Hipoteza je vedno trditev, ki jo lahko poskušamo zavrniti. Hipoteza ni potrjena in tehnično ni pravilno reči, da je hipoteza sprejeta. Hipotezo lahko ali zavrnemo ali ne zavrnemo.
+
+Ničelno hipotezo $H_0$ lahko neposredno preverimo in če je zavrnjena, je alternativna hipoteza pravilna (to je običajno naši cilj)\\
+Alternativno hipotezo $H_1$ preverimo le posredno: če ničelne hipoteze ne moremo zavrniti, ničelne hipoteze ne sprejmemo, ampak sklenemo, da ni dovolj podatkov, da bi rekli, ali je razlika statistično pomembna
+
+Primer: Ničelna hipoteza: Med ženskami in moškimi ni razlike v sposobnosti večopravilnosti. Alternativna hipoteza: Obstajajo razlike v sposobnosti večopravilnosti med ženskami in moškimi (dvostranski test). Alternativna hipoteza: Ženske so boljše pri večopravilnosti kot moški (enostransko testiranje)
+
+Dve vrsti napake.
+
+\subsection*{Stopnja značilnosti}
+
+Izberemo največjo verjetnost $\alpha$ stopnjo, do katere smo pripravljeni tvegati napako tipa I. Običajno se odločimo za $5\%$ stopnjo značilnosti $(\alpha = 0.05)$ , lahko pa je tudi $1\%\  (\alpha = 0.01)$ ali nižja. Na podlagi izbranega $\alpha$ določimo kritično območje, kjer bo ničelna hipoteza zavrnjena. Pri tem upoštevamo, ali gre za dvostranski ali enostranski test
+
+Slika two tests same probability level one tail, two tail.
+
+\subsection*{Studentova $t$ porazdelitev}
+
+Slika porazdelitve
+
+Razpršenost je odvisna od tako imenovanih prostostnih stopenj (\textit{angl. degrees of freedom}, $df$), ki so opredeljene kot velikost vzorca minus število parametrov populacije, ki jih je treba oceniti na podlagi vzorca.\\
+Večji kot je vzorec, bližje je $t$ porazdelitev normalni $Z$ porazdelitvi
+
+\subsection*{$T$ test za en vzorec}
+
+Primerjava povprečja na vzorcu z določeno vrednostjo (npr. populacijskim parametrom ali nevtralno točko na lestvici)\\
+\[t = \frac{mean-comparison}{standard error}\]
+Predpostavke:
+\begin{itemize}
+\item Slučajno vzorčenje, neodvisni vzorci
+\item Normalna porazdelitev podatkov (če je $N < 30$)
+\end{itemize}
+
+Primer: Ali se študenti pri preizkusu odrežejo bolje od naključja?\\
+28 študentov je opravilo test s 100 vprašanji o besedilu, ki ga niso prebrali.\\
+Vsako vprašanje je imelo 5 možnih odgovorov, zato bi pri povsem naključni izbiri pričakovali, da bo pravilno izbranih 20 postavk.\\
+Vendar so v povprečju pravilno odgovorili na 46,57 vprašanj. S t-testom za en vzorec (angl. one-sample t-test) pokažemo, da so se študenti odrezali statistično značilno bolje od naključja $(M=46.57, t(27)=20.6, p < 0.001)$.
+
+\begin{Vaje}{1}
+    Izbrali smo vzorec šestnajstih otrok in jih stehtali. Določi interval zaupanja za pravo vrednost aritmetične sredine s $5\%$ tveganja.\\
+    X: 35 37 29	26 31 32 28	40 27 33 33	34 31 30 29	38
+\end{Vaje}
+\begin{Vaje}{2}
+Imamo podatke za vzorec učencev o tem, koliko ur tedensko porabijo za učenje doma. 78 jih je odgovorilo, da se pripravljajo na pouk 2 do 3 ure tedensko, 125 s jih uči 3 do 4 ure na teden, 103 se učijo vsak teden več kot 4 ure. Določi odstotek tistih učencev, ki tedensko posvečajo učenju najmanj časa in oceni ta odstotek v osnovni množici (z $1\%$ tveganjem).
+\end{Vaje}
+\begin{Vaje}{3}
+Učitelja matematike zanima, ali je povprečno število točk njegovih učencev na preizkusu znanja višje od nacionalnega povprečja, ki je 75. Izračunajte vrednost $t$-statistike pri stopnji tveganja $5 \%$, določite kritično območje in sklepajte o rezultati za naslednje podatke:\\
+Za sodelovanje v raziskavi je bil izbran vzorec 25 učencev.\\
+Povprečna ocena iz matematičnega izpita v vzorcu je 80.\\
+Standardni odklon v vzorcu je 6.
+\end{Vaje}
+\begin{Vaje}{4}
+    Želimo določiti minimalno velikost vzorca za pilotno študijo novega izobraževalnega programa. Standardni odklon učinka programa na bralne sposobnosti je 3 točke. Želite imeti $95\%$ stopnjo zaupanja, da bo vaša ocena učinka natančna. Izračunajte minimalno velikost vzorca.
+\end{Vaje}
