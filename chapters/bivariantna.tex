@@ -60,9 +60,52 @@ Izračun:
         \[\bar{x}_1 - \bar{x}_2 \pm (t \cdot SE(\bar{x}_1 - \bar{x}_2))\]
 \end{enumerate}
 
+\subsection*{Analiza variance (ANOVA)}
+
+Primerjava povprečij večih skupin (če dve skupini je ANOVA enaka T testu).
+
+$F$ porazdelitev ima dve prostorski skopnji
+
+Slika variance between and within.
+
+Primer: Tri skupine desetih slučajno izbranih študentov so postavljene v tri različne učilnice. A ima konstantno glasbo v ozadju, B variabilno glasbo v ozadju, C brez glasbe. Po enem mesecu nas zanima, ali glasba pomaga pri učenju.
+
+Izračun:
+\begin{enumerate}
+    \item Postavimo ničelno in alternativno hipotezo:
+        \begin{itemize}
+            \item $H_0$: Med skupinami ni razlik v vsrkavanju informacij.
+            \item $H_1$: Med skupinami so razlike v vsrkavanju informacij.
+        \end{itemize}
+    \item Izračunamo povprečja. Skupno povprečje je $\bar{x} = 5,1$, povprečja posameznih skupin pa so $\bar{x}_1 = 7$, $\bar{x}_2 = 4$, in $\bar{x}_3 = 4,3$.
+    \item Vsota kvadratov:
+        \begin{itemize}
+            \item Med skupinami: $SS_{between} = 54,6$
+            \item Znotraj skupin: $SS_{within} = 90,1$
+        \end{itemize}
+    \item Prostostne stopnje:
+        \begin{itemize}
+            \item Med skupinami: $df_{between} = 2$
+            \item Znotraj skupin: $df_{within} = 27$
+        \end{itemize}
+    \item Povprečni kvadrat:
+        \begin{itemize}
+            \item Med skupinami: $MS_{between} = \frac{SS_{between}}{df_{between}} = \frac{54,6}{2} = 27,3$
+            \item Znotraj skupin: $MS_{within} = \frac{SS_{within}}{df_{within}} = \frac{90,1}{27} = 3,34$
+        \end{itemize}
+    \item Empirična F-vrednost: 
+        \[F = \frac{MS_{between}}{MS_{within}} = \frac{27,3}{3,34} = 8,18\]
+    \item V tabeli poiščemo kritično vrednost pri $\alpha = 5\%$: $F_{critical} = 2,03$.
+    \item Ker je empirična F-vrednost (8,18) večja od kritične vrednosti (2,03), zavrnemo ničelno hipotezo $H_0$.
+    \item Izračunamo eta kvadrat ($\eta^2$), ki je merilo učinka:
+        \[\eta^2 = \frac{SS_{between}}{SS_{between} + SS_{within}} = \frac{54,6}{54,6 + 90,1} = 0,38\]
+        \[ \eta = \sqrt{\eta^2} = \sqrt{0,38} \approx 0,62\]
+\end{enumerate}
+
+\subsection*{Neparametrične alternative}
 
 
-\subsection*{ANOVA}
+
 
 
 
