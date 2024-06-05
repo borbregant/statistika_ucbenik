@@ -1,5 +1,69 @@
 \section{Bivariantna statistika}
 
+\subsection*{T-test}
+
+\subsubsection*{T-test za (parne) odvisne vzorce}
+
+Primerjava povprečij dveh pogojev, v katerih so sodelovale iste enote.
+
+Primer: 20 študentov je dobilo test v izpolnjevanje pred študijem določenega predmeta in nato ponovno po zaključku tega predmeta.
+
+Testna statistika $t=\frac{\bar{d}}{SE(\bar{d})}$.
+
+Izračun:
+
+\begin{enumerate}
+    \item Postavimo ničelno in alternativno hipotezo:
+        \begin{itemize}
+            \item $H_0$: Ni razlik v znanju študentov pred in po študiju tega modula.
+            \item $H_1$: Obstajajo razlike v znanju študentov pred in po študiju tega modula.
+        \end{itemize}
+    \item Izračunamo razlike med pari opazovanj: $d_i = y_i - x_i$ (za vajo lahko to naredimo v SPSS).
+    \item Izračunamo povprečje razlik: $\bar{d}$.
+    \item Standardni odklon razlik: $s_d$.
+    \item Standardna napaka povprečne razlike: $SE(\bar{d}) = \frac{s_d}{\sqrt{n}}$.
+    \item T-statistika: $t = \frac{\bar{d}}{SE(\bar{d})}$ (empirična vrednost); $df = n-1$.
+    \item V tabeli poiščemo kritično vrednost pri $\alpha = 5\%$.
+    \item Empirična vrednost $t$ pade v kritično območje, ki ga določa teoretična vrednost $t$ pri dani stopnji zaupanja, zato lahko zavrnemo ničelno hipotezo in sprejmemo alternativno..... Napiši kaj če ne pade v kritično pade!!!!
+    \item Interval zaupanja za resnično vrednost razlike povprečij je: 
+        \[\bar{d} \pm (t \cdot SE(\bar{d}))\]
+\end{enumerate}
+
+
+\subsubsection*{T-test za neodvisne vzorce}
+
+Primerjava preizkusa domneve o srednjih vrednosti dveh skupin enot.
+
+Primer: Primerjava kalorične vrednosti dveh vrst štrudlja.
+
+Testna statistika $t = \frac{\bar{x_1}-\bar{x_2}}{SE(\bar{x_1}-\bar{x_2})}$.
+
+Opomba: Test predpostavi enakost varianc neodvisnih vzorcev. Če to ni zagotovoljeno, uporabimo Welchov test $t = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}$.
+
+Izračun:
+\begin{enumerate}
+    \item Postavimo ničelno in alternativno hipotezo:
+        \begin{itemize}
+            \item $H_0$: Ni razlik v kalorični vsebnosti med dvema vrstama hotdoga.
+            \item $H_1$: So razlike v kalorični vsebnosti med dvema vrstama hotdoga.
+        \end{itemize}
+    \item Razlika med povprečnima vrednostima: $\bar{x}_1 - \bar{x}_2$.
+    \item Skupni standardni odklon (pod predpostavko enakih varianc):
+        \[s_p = \sqrt{\frac{(n_1 - 1) \cdot s_1^2 + (n_2 - 1) \cdot s_2^2}{n_1 + n_2 - 2}}\]
+    \item Standardna napaka: 
+        \[SE(\bar{x}_1 - \bar{x}_2) = s_p \cdot \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}\]
+    \item Empirična t-vrednost: 
+        \[t = \frac{\bar{x}_1 - \bar{x}_2}{SE(\bar{x}_1 - \bar{x}_2)}\]
+    \item Prostostne stopnje: $df = n_1 + n_2 - 2$.
+    \item V tabeli poiščemo kritično vrednost pri $\alpha = 5\%$.
+    \item Interval zaupanja za resnično vrednost razlike povprečij: 
+        \[\bar{x}_1 - \bar{x}_2 \pm (t \cdot SE(\bar{x}_1 - \bar{x}_2))\]
+\end{enumerate}
+
+
+
+\subsection*{ANOVA}
+
 
 
 \begin{Vaje}{1}
