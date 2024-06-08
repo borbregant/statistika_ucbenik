@@ -104,9 +104,150 @@ Izračun:
 
 \subsection*{Neparametrične alternative}
 
+Če podatki niso normalno porazdeljeni, moramo parametrični test zamenjati z ustreznim neparametričnim testom.
 
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+    \textbf{Cilj} & \textbf{Parametrični test} & \textbf{Neparametrični test} \\ \hline
+    Testiranje razlike med dvema odvisnima nizoma enot & Odvisni $t$-test & Wilcoxon test predznačenih rangov \\ \hline
+    Testiranje razlike med dvema neodvisnima nizoma enot & Neodvisni $t$-test & Mann-Whitney $U$ test \\ \hline
+    Testiranje razlike med tremi ali več neodvisnimi nizi enot & ANOVA & Kruskal-Wallis $H$ test \\ \hline
+    \end{tabular}
+    \caption{Pregled parametričnih in neparametričnih testov}
+\end{table}
 
+\subsubsection*{Hi-kvadrat test}
 
+Uporablja se za ugotavljanje, ali obstaja statistično značilna razlika med pričakovanimi in opazovanimi frekvencami v eni ali več kategorijah (torej če imamo nomilane spremenljivke)
+
+Ničelna hipoteza $H_0$: V populaciji ni povezanosti med spremenljivkama.
+
+Slika hi kvadrat porazdelitve
+
+\paragraph{Izračunavanje stopnje prostosti ($df$):}
+Stopnja prostosti ($df$) za hi-kvadrat test se izračuna po formuli:
+\[df = (\text{vrstice} - 1) \cdot (\text{stolpci} - 1)\]
+
+\paragraph{Postopek izračuna:}
+\begin{enumerate}
+    \item Zberemo podatke in uredimo frekvence v kontingenčni tabeli.
+    \item Izračunamo pričakovane frekvence za vsako celico tabele.
+    \item Uporabimo formulo za hi-kvadrat vrednost:
+    \[\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i}\]
+    kjer je $O_i$ opazovana frekvenca, $E_i$ pa pričakovana frekvenca.
+\end{enumerate}
+
+\paragraph{Uporaba kontingenčnih koeficientov:}
+Ker vrednosti hi-kvadrat same po sebi niso primerljive med različnimi tabelami, pogosto uporabimo kontingenčne koeficiente, kot je Cramérjev $V$, ki ga izračunamo po formuli:
+\[V = \sqrt{\frac{\chi^2}{N \cdot (k - 1)}},\]
+kjer je $\chi^2$ hi-kvadrat vrednost, $N$ skupno število opazovanj, $k$ pa število kategorij v najbolj številni spremenljivki.
+
+\subsubsection*{Spearmanov koeficient}
+
+Spearmanov koeficient korelacije meri moč in smer monotone povezave med dvema spremenljivkama. Uporablja se za ordinalne spremenljivke ali za kvantitativne spremenljivke, ki niso nujno normalno porazdeljene.
+
+\paragraph{Ničelna hipoteza $H_0$:}
+Med dvema spremenljivkama ni monotone povezave.
+
+\paragraph{Formula:}
+Spearmanov koeficient ($\rho$) se izračuna po formuli:
+\[
+\rho = 1 - \frac{6 \sum d_i^2}{n(n^2 - 1)}
+\]
+kjer je $d_i$ razlika med vrstnimi številkami vsakega opazovanja in $n$ število opazovanj.
+
+\paragraph{Postopek izračuna:}
+\begin{enumerate}
+    \item Razvrstimo podatke v naraščajočem vrstnem redu za vsako spremenljivko.
+    \item Izračunamo vrstne številke za vsako spremenljivko.
+    \item Izračunamo razlike med vrstnimi številkami ($d_i$) za vsako opazovanje.
+    \item Uporabimo zgornjo formulo za izračun Spearmanovega koeficienta.
+\end{enumerate}
+
+\paragraph{Interpretacija:}
+Spearmanov koeficient se giblje med -1 in 1. Vrednost blizu 1 kaže na močno pozitivno monotono povezavo, vrednost blizu -1 kaže na močno negativno monotono povezavo, vrednost blizu 0 pa kaže na odsotnost monotone povezave.
+
+\paragraph{Zaključek:}
+Spearmanov koeficient je uporaben za analizo povezav med ordinalnimi ali kvantitativnimi spremenljivkami, ki niso normalno porazdeljene. Pomaga nam razumeti moč in smer monotone povezave med spremenljivkami.
+
+\subsubsection*{Pearsonov koeficient}
+
+Pearsonov koeficient korelacije meri linearno povezanost med dvema kvantitativnima spremenljivkama. Uporablja se za intervalne ali razmerne spremenljivke, ki so normalno porazdeljene.
+
+\paragraph{Ničelna hipoteza $H_0$:}
+Med dvema spremenljivkama ni linearne povezave.
+
+\paragraph{Formula:}
+Pearsonov koeficient ($r$) se izračuna po formuli:
+\[r = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum (x_i - \bar{x})^2 \sum (y_i - \bar{y})^2}},\]
+kjer je $x_i$ in $y_i$ vsaka opazovanja za spremenljivki $x$ in $y$, $\bar{x}$ in $\bar{y}$ pa povprečji za spremenljivki $x$ in $y$.
+
+\paragraph{Postopek izračuna:}
+\begin{enumerate}
+    \item Izračunamo povprečje za vsako spremenljivko.
+    \item Izračunamo odstopanja vsakega opazovanja od povprečja.
+    \item Pomnožimo odstopanja za ustrezna opazovanja in izračunamo vsoto.
+    \item Izračunamo kvadrate odstopanj za vsako spremenljivko in vsoto kvadratov.
+    \item Uporabimo zgornjo formulo za izračun Pearsonovega koeficienta.
+\end{enumerate}
+
+\paragraph{Interpretacija:}
+Pearsonov koeficient se giblje med -1 in 1. Vrednost blizu 1 kaže na močno pozitivno linearno povezavo, vrednost blizu -1 kaže na močno negativno linearno povezavo, vrednost blizu 0 pa kaže na odsotnost linearne povezave.
+
+\subsection*{Povezanost}
+
+Povezanost med dvema spremenljivkama pomeni, da spremembe v eni spremenljivki sovpadajo s spremembami v drugi spremenljivki. Povezanost lahko merimo na različne načine, odvisno od narave spremenljivk in vrste povezave.
+
+\subsection*{Funkcionalna povezanost}
+Funkcionalna povezanost pomeni, da obstaja točno določena matematična funkcija, ki povezuje dve spremenljivki. Na primer, če $y = f(x)$, potem je $y$ popolnoma določeno s $x$. To je najmočnejša oblika povezanosti, saj vsaka vrednost ene spremenljivke določa točno eno vrednost druge spremenljivke.
+
+\subsection*{Korelacijska povezanost}
+Korelacijska povezanost meri stopnjo in smer linearne povezave med dvema kvantitativnima spremenljivkama. Najpogosteje uporabljamo Pearsonov koeficient korelacije ($r$), ki meri linearno povezanost, in Spearmanov koeficient korelacije ($\rho$), ki meri monotono povezanost.
+
+\subsubsection*{Močna in šibka povezanost}
+Moč povezanosti se nanaša na velikost koeficienta korelacije. 
+\begin{itemize}
+    \item \textbf{Močna povezanost}: Koeficient korelacije blizu 1 ali -1 kaže na močno povezanost.
+    \item \textbf{Šibka povezanost}: Koeficient korelacije blizu 0 kaže na šibko povezanost.
+\end{itemize}
+
+\subsubsection*{Linearna in nelinearna povezanost}
+\begin{itemize}
+    \item \textbf{Linearna povezanost}: Povezanost, kjer lahko povezavo med spremenljivkama najbolje opišemo z ravno črto. Pearsonov koeficient korelacije ($r$) je primeren za merjenje linearne povezanosti.
+    \item \textbf{Nelinearna povezanost}: Povezanost, kjer je povezava med spremenljivkama bolj zapletena in je ni mogoče opisati z ravno črto. Spearmanov koeficient korelacije ($\rho$) je primeren za merjenje monotone (nelinearne) povezanosti.
+\end{itemize}
+
+\subsubsection*{Pozitivna in negativna povezanost}
+\begin{itemize}
+    \item \textbf{Pozitivna povezanost}: Ko se ena spremenljivka povečuje, se druga spremenljivka tudi povečuje. Koeficient korelacije je pozitiven.
+    \item \textbf{Negativna povezanost}: Ko se ena spremenljivka povečuje, se druga spremenljivka zmanjšuje. Koeficient korelacije je negativen.
+\end{itemize}
+
+\subsection*{Kovarianca}
+
+Kovarianca je mera, ki opisuje, kako se dve spremenljivki sočasno spreminjata. Pozitivna kovarianca pomeni, da se večje vrednosti ene spremenljivke povezujejo z večjimi vrednostmi druge spremenljivke, medtem ko negativna kovarianca pomeni, da se večje vrednosti ene spremenljivke povezujejo z manjšimi vrednostmi druge spremenljivke.
+
+\subsection*{Formula}
+Kovarianca dveh spremenljivk $X$ in $Y$ se izračuna po formuli:
+\[\text{Cov}(X, Y) = \frac{1}{n-1} \sum_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y}),\]
+kjer:
+\begin{itemize}
+    \item $X_i$ in $Y_i$ sta posamezni opazovanji spremenljivk $X$ in $Y$,
+    \item $\bar{X}$ in $\bar{Y}$ sta povprečji spremenljivk $X$ in $Y$,
+    \item $n$ je število opazovanj.
+\end{itemize}
+
+\subsubsection*{Interpretacija}
+\begin{itemize}
+    \item \textbf{Pozitivna kovarianca}: Ko se vrednosti ene spremenljivke povečujejo, se povečujejo tudi vrednosti druge spremenljivke.
+    \item \textbf{Negativna kovarianca}: Ko se vrednosti ene spremenljivke povečujejo, se vrednosti druge spremenljivke zmanjšujejo.
+    \item \textbf{Kovarianca blizu nič}: Ni jasno izražene povezave med spremenljivkama.
+\end{itemize}
+
+\subsubsection*{Razlika med kovarianco in korelacijo}
+Kovarianca meri le smer sočasnih sprememb dveh spremenljivk, vendar ni standardizirana, zato njena vrednost ni omejena. Po drugi strani pa je korelacija standardizirana mera, ki pove, kako močna in v katero smer je linearna povezava med dvema spremenljivkama, njena vrednost pa je vedno med -1 in 1.
 
 
 \begin{Vaje}{1}

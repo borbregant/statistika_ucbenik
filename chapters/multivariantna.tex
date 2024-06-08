@@ -4,48 +4,57 @@ Povezanost med spremenljivkama ne pomeni nujno, da med njima obstaja vzročna po
 
 \subsection*{Multipla regresijska analiza (linearna)}
 
-Metoda za preučevanje razmerja med odvisno spremenljivko in dvema ali več neodvisnimi spremenljivkami (vrednosti odvisne spremenljivke napovedujemo z nizom neodvisnih spremenljivk).
+Multipla regresijska analiza je metoda za preučevanje razmerja med odvisno spremenljivko in dvema ali več neodvisnimi spremenljivkami. Namen je napovedovanje vrednosti odvisne spremenljivke z nizom neodvisnih spremenljivk.
 
-Regresijski model $Y=\beta_0 +\beta_1 X_1 + \ldots + \beta_k X_k$.
+Regresijski model je podan kot:
+\[Y = \beta_0 + \beta_1 X_1 + \ldots + \beta_k X_k\]
 
-Delež variabilnosti napovemo z $R^2$.
-
-Velikost vzorca želimo vsaj 10-krat več primerov kot neodvisnih spremenljivk.
+Delež variabilnosti, ki ga model pojasni, je izražen z $R^2$. Velikost vzorca naj bo vsaj 10-krat večja od števila neodvisnih spremenljivk.
 
 Predpostavke multiple linearne regresije:
 \begin{itemize}
-    \item Neodvisnost
-    \item Normalnost
-    \item Homoskedastičnost
-    \item Linearnost
+    \item \textbf{Neodvisnost}: Opazovanja so neodvisna.
+    \item \textbf{Normalnost}: Napake v regresijskem modelu so normalno porazdeljene.
+    \item \textbf{Homoskedastičnost}: Variabilnost napak je konstantna pri vseh nivojih neodvisnih spremenljivk.
+    \item \textbf{Linearnost}: Obstaja linearna povezava med odvisno in neodvisnimi spremenljivkami.
 \end{itemize}
 
 \subsection*{Multipla regresijska analiza (logistična)}
 
-Kjer je odvisna spremenljivka nominalna.
+Logistična regresija se uporablja, kadar je odvisna spremenljivka nominalna. Namesto linearne funkcije se uporablja logistična funkcija, ki omogoča napovedovanje kategorije odvisne spremenljivke.
 
-Namesto linearne funkcije uporabimo logistične funkcije, ki zagotovijo določitev kategorije.
+Logistični model je podan kot:
+\[\text{logit}(p) = \log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1 X_1 + \ldots + \beta_k X_k,\]
+
+kjer je $p$ verjetnost, da se odvisna spremenljivka pojavi v določeni kategoriji.
 
 \subsection*{Razvrščanje v skupine (clustering)}
 
-...
+Razvrščanje v skupine ali clustering je metoda za razdelitev podatkov v več homogenih skupin na podlagi podobnosti med posameznimi podatkovnimi točkami. Najpogostejše metode vključujejo k-means, hierarhično razvrščanje in DBSCAN.
 
 \subsection*{Metode zmanjšanja dimenzionalnosti podatkov}
 
-PCA
+\textbf{Analiza glavnih komponent (PCA)}:
+PCA je tehnika za zmanjšanje dimenzionalnosti podatkov, ki pretvori več povezanih spremenljivk v manj nepovezanih komponent. To omogoča lažjo vizualizacijo in analizo podatkov.
 
-Faktorksa analiza
+\textbf{Faktorska analiza}:
+Faktorska analiza identificira latentne spremenljivke ali faktorje, ki pojasnjujejo vzorce korelacij med opazovanimi spremenljivkami. Faktorji so teoretične konstrukte, ki so lahko osnovni vzroki za opazovane korelacije.
 
 \subsection*{Analiza zanesljivosti}
 
-Cronbachov $\alpha$ koeficient
+\textbf{Cronbachov $\alpha$ koeficient}:
+Cronbachov $\alpha$ koeficient je mera za notranjo konsistenco (zanesljivost) skale ali vprašalnika. Visoka vrednost $\alpha$ (bližje 1) nakazuje na visoko zanesljivost skale.
 
 \subsection*{Druge multivariantne metode}
 
-Kanonična korelacijska analiza, diskriminantna analiza, strukturni modeli...
+\textbf{Kanonična korelacijska analiza}:
+Kanonična korelacijska analiza je metoda za preučevanje povezave med dvema sklopoma spremenljivk. Omogoča določitev linearnih kombinacij spremenljivk iz obeh sklopov, ki so medsebojno najbolj povezane.
 
+\textbf{Diskriminantna analiza}:
+Diskriminantna analiza je tehnika za razvrščanje opazovanj v predhodno določene skupine na podlagi neodvisnih spremenljivk. Uporablja se za napovedovanje kategorijske odvisne spremenljivke.
 
-
+\textbf{Strukturni modeli}:
+Strukturni modeli so kompleksni statistični modeli, ki omogočajo preučevanje vzročnih odnosov med več spremenljivkami. Združujejo elemente regresijske analize, faktorske analize in poti.
 
 \begin{Vaje}{1}
     ...
