@@ -2,39 +2,259 @@
 
 \subsection*{Absolutna, relativna in grupirana frekvenčna porazdelitev}
 
-\subsection*{Grafična predsstavitev frelvenčnih porazdelitev za nominalne in ordinalne spremenljivke}
+\subsection*{Grafična predstavitev frelvenčnih porazdelitev za nominalne in ordinalne spremenljivke}
 
-Stolpčni grafikon $>$ tortni grafikon
+Stolpčni grafikon prikazuje frekvence posameznih kategorij z navpičnimi ali vodoravnimi stolpci, kjer višina oziroma dolžina stolpca predstavlja frekvenco določene kategorije. Prednost stolpčnih grafikonov je v tem, da omogočajo enostavno primerjavo med kategorijami in so primernejši za prikaz večjih množic podatkov od tortnega grafikona.
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        ybar,
+        symbolic x coords={Kategorija A, Kategorija B, Kategorija C, Kategorija D},
+        xtick=data,
+        ymin=0,
+        ylabel={Frekvenca},
+        xlabel={Kategorija},
+        nodes near coords,
+        ]
+    \addplot coordinates {(Kategorija A, 10) (Kategorija B, 20) (Kategorija C, 15) (Kategorija D, 5)};
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Stolpčni grafikon frekvenc za nominalne spremenljivke.}
+    \end{figure}
 
 \subsection*{Grafična predsstavitev frelvenčnih porazdelitev za intervalne in razmernostne spremenljivke}
 
-Histogram
+Histogram je vrsta stolpčnega grafikona, kjer stolpci predstavljajo frekvence podatkov v določenih intervalih. Histogram je uporaben za prikaz razpršenosti podatkov in za ugotavljanje oblik porazdelitev, kot so normalna, enakomerno porazdeljena ali pristranska porazdelitev.
 
-Poligon
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        ybar interval,
+        ylabel={Frekvenca},
+        xlabel={Interval},
+        ]
+    \addplot coordinates {(0, 1) (1, 3) (2, 5) (3, 4) (4, 2)};
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Histogram frekvenc za intervalne spremenljivke.}
+\end{figure}
 
-Ogiva (kumulativne frekvence)
+Poligon frekvenc je črtni grafikon, ki povezuje sosednje točke, ki predstavljajo frekvence intervalov. Uporablja se za prikaz porazdelitve podatkov in omogoča enostavno primerjavo z drugimi porazdelitvami.
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        ylabel={Frekvenca},
+        xlabel={Interval},
+        ]
+    \addplot coordinates {(0, 1) (1, 3) (2, 5) (3, 4) (4, 2)} -- cycle;
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Poligon frekvenc za intervalne spremenljivke.}
+\end{figure}
+
+Ogiva je črtni grafikon, ki prikazuje kumulativne frekvence. To pomeni, da vsaka točka na grafu predstavlja vsoto vseh prejšnjih frekvenc do določene vrednosti. Ogiva je uporabna za določanje percentilov in za primerjavo kumulativnih porazdelitev med različnimi skupinami podatkov.
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        ylabel={Kumulativna frekvenca},
+        xlabel={Interval},
+        ]
+    \addplot coordinates {(0, 1) (1, 4) (2, 9) (3, 13) (4, 15)};
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Ogiva za kumulativne frekvence.}
+\end{figure}
 
 \subsection*{Normalna porazdelitev}
 
-\[f_X(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}}\]
+Normalna porazdelitev je ena izmed najpomembnejših verjetnostnih porazdelitev v statistiki in se pogosto uporablja pri modeliranju različnih naravnih in družbenih pojavov. Gostotna funkcija normalne porazdelitve je podana z naslednjo enačbo:
 
-Slika
+\[ f_X(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2} \frac{(x-\mu)^2}{\sigma^2}} \]
 
-Asimetričnost (skewness)
+kjer je $\mu$ povprečje (aritmetična sredina) in $\sigma$ standardni odklon. Graf normalne porazdelitve je zvonaste oblike in simetričen glede na povprečje $\mu$.
 
-V levo $(k<0)$, v desno $(k>0)$, če k med -1 in 1 še vedno normalna. Slika
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    no markers, 
+    domain=-4:4, 
+    samples=100, 
+    axis lines*=left, 
+    xlabel=$x$, 
+    ylabel=$f_X(x)$,
+    height=6cm, 
+    width=10cm, 
+    xtick=\empty, 
+    ytick=\empty,
+    enlargelimits=false, 
+    clip=false, 
+    axis on top,
+    grid = major
+    ]
+    \addplot[very thick,cyan!50!black] {1/(sqrt(2*pi))*exp(-x^2/2)};
+\end{axis}
+\end{tikzpicture}
+\caption{Gostotna funkcija normalne porazdelitve.}
+\end{figure}
 
-Sploščenost (kurtosis)
+\subsubsection*{Asimetričnost (skewness)}
 
-Lepto $(k<0)$, mezo $(k=0)$, plati $(k>0)$, slika, če med -1,1 normalna
+Asimetričnost meri, kako je porazdelitev nagnjena v levo ali desno. Normalna porazdelitev je popolnoma simetrična in ima koeficient asimetričnosti $k = 0$. Vendar pa v realnih podatkih pogosto srečamo porazdelitve, ki niso povsem simetrične:
 
-\subsection*{Rangiranje}
+- **Negativna asimetričnost (v levo, $k < 0$)**: Rep porazdelitve je daljši na levi strani.
+- **Pozitivna asimetričnost (v desno, $k > 0$)**: Rep porazdelitve je daljši na desni strani.
 
-Primer
+Če je $k$ med -1 in 1, se porazdelitev še vedno lahko šteje za normalno.
 
-\subsection*{Kvantili}
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    no markers, 
+    domain=-4:4, 
+    samples=100, 
+    axis lines*=left, 
+    xlabel=$x$, 
+    ylabel=$f_X(x)$,
+    height=6cm, 
+    width=10cm, 
+    xtick=\empty, 
+    ytick=\empty,
+    enlargelimits=false, 
+    clip=false, 
+    axis on top,
+    grid = major
+    ]
+    \addplot[very thick,cyan!50!black] {1/(sqrt(2*pi))*exp(-x^2/2)};
+    \addplot[very thick,orange!90!black, domain=-4:3] {1/(sqrt(2*pi))*exp(-((x+1)^2)/2)};
+    \addplot[very thick,green!70!black, domain=-3:4] {1/(sqrt(2*pi))*exp(-((x-1)^2)/2)};
+    \legend{Normalna ($k=0$), Negativna asimetričnost ($k<0$), Pozitivna asimetričnost ($k>0$)}
+\end{axis}
+\end{tikzpicture}
+\caption{Grafi normalne porazdelitve s pozitivno in negativno asimetričnostjo.}
+\end{figure}
 
-Primer in imena
+\subsubsection*{Sploščenost (kurtosis)}
+
+Sploščenost meri, kako visoka in ostra je konica porazdelitve v primerjavi z normalno porazdelitvijo:
+
+- **Leptokurtična ($k > 0$)**: Porazdelitev ima ožjo in višjo konico ter debelejše repe.
+- **Mezokurtična ($k = 0$)**: Porazdelitev je normalno zvonaste oblike.
+- **Platokurtična ($k < 0$)**: Porazdelitev ima ploščato konico in tanjše repe.
+
+Če je $k$ med -1 in 1, se porazdelitev še vedno lahko šteje za normalno.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    no markers, 
+    domain=-4:4, 
+    samples=100, 
+    axis lines*=left, 
+    xlabel=$x$, 
+    ylabel=$f_X(x)$,
+    height=6cm, 
+    width=10cm, 
+    xtick=\empty, 
+    ytick=\empty,
+    enlargelimits=false, 
+    clip=false, 
+    axis on top,
+    grid = major
+    ]
+    \addplot[very thick,cyan!50!black] {1/(sqrt(2*pi))*exp(-x^2/2)};
+    \addplot[very thick,orange!90!black] {0.8/(sqrt(2*pi))*exp(-x^2/2)};
+    \addplot[very thick,green!70!black] {1.2/(sqrt(2*pi))*exp(-x^2/2)};
+    \legend{Mezokurtična ($k=0$), Platokurtična ($k<0$), Leptokurtična ($k>0$)}
+\end{axis}
+\end{tikzpicture}
+\caption{Grafi normalne porazdelitve s pozitivno in negativno sploščenostjo.}
+\end{figure}
+
+\subsubsection*{Rangiranje}
+
+Rangiranje vključuje razvrščanje podatkovnih točk v naraščajočem ali padajočem vrstnem redu. Rang določene vrednosti v podatkovnem naboru je njeno mesto v tem vrstnem redu. Rangiranje je uporabno za prepoznavanje relativnega položaja podatkovne točke znotraj nabora podatkov.
+
+\textbf{Primer:}
+\begin{itemize}
+    \item Podatkovni niz: $45, 32, 67, 23, 89, 56$
+    \item Urejeni podatkovni niz: $23, 32, 45, 56, 67, 89$
+    \item Rangiranje: 
+    \begin{itemize}
+        \item 23 ima rang 1
+        \item 32 ima rang 2
+        \item 45 ima rang 3
+        \item 56 ima rang 4
+        \item 67 ima rang 5
+        \item 89 ima rang 6
+    \end{itemize}
+\end{itemize}
+
+\subsubsection*{Kvantili}
+
+Kvantili so vrednosti, ki delijo urejen niz podatkov na enake dele. Najpogosteje uporabljeni kvantili so kvartili, decili in percentili.
+
+\textbf{Kvartili:}
+Kvartili delijo podatkovni niz na štiri enake dele:
+\begin{itemize}
+    \item Prvi kvartil ($Q_1$): 25. percentil
+    \item Drugi kvartil ($Q_2$): 50. percentil (median)
+    \item Tretji kvartil ($Q_3$): 75. percentil
+\end{itemize}
+
+\textbf{Decili:}
+Decili delijo podatkovni niz na deset enakih delov:
+\begin{itemize}
+    \item Prvi decil ($D_1$): 10. percentil
+    \item Drugi decil ($D_2$): 20. percentil
+    \item Tretji decil ($D_3$): 30. percentil
+    \item itd.
+\end{itemize}
+
+\textbf{Percentili:}
+Percentili delijo podatkovni niz na sto enakih delov:
+\begin{itemize}
+    \item 10. percentil: vrednost pod katero leži 10\% podatkov
+    \item 50. percentil: vrednost pod katero leži 50\% podatkov (median)
+    \item 90. percentil: vrednost pod katero leži 90\% podatkov
+\end{itemize}
+
+\textbf{Primer:}
+Podatkovni niz: $15, 20, 35, 40, 50$
+\begin{itemize}
+    \item $Q_1$ (25. percentil): $20 + 0.25 \times (35 - 20) = 23.75$
+    \item $Q_2$ (50. percentil): Median = $35$
+    \item $Q_3$ (75. percentil): $35 + 0.75 \times (50 - 35) = 46.25$
+\end{itemize}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    height=6cm,
+    width=12cm,
+    xtick={1, 2, 3, 4, 5},
+    xticklabels={15, 20, 35, 40, 50},
+    xlabel={Podatkovne točke},
+    ylabel={Vrednost},
+    ytick={0, 10, 20, 30, 40, 50, 60},
+    grid=major
+]
+\addplot+[only marks,mark=*] coordinates {(1, 15) (2, 20) (3, 35) (4, 40) (5, 50)};
+\addplot[domain=1:5, samples=5, color=blue] {x * 10};
+\end{axis}
+\end{tikzpicture}
+\caption{Prikaz podatkovnega niza in kvantilov.}
+\end{figure}
 
 \subsection*{Mere centralne tendence}
 \begin{itemize}
@@ -56,26 +276,42 @@ V kolikšni meri se vrednosti razlikujejo med seboj ter razlikujejo in odstopajo
     \end{itemize}
 \end{itemize}
 
+\begin{Vaje}{1}
+    Učence smo testirali v znanju matematike in dosegli so naslednje rezultate:
+\[
+\begin{array}{cccccccccccccc}
+20 & 17 & 25 & 20 & 12 & 25 & 18 & 16 & 25 \\
+17 & 21 & 22 & 22 & 16 & 17 & 22 & 20 & 19 & 16 \\
+24 & 20 & 15 & 14 & 23 & 15 & 19 & 21 & 26 \\
+18 & 29 & 30 & 20 & 16 & 12 & 24 & 30 & 27 & 25 \\
+15 & 25 & 24 & 23 & 26 & 21 \\
+\end{array}
+\]
 
-\begin{multicols}{2}
-\noindent
-\textbf{Theory:}
+\begin{enumerate}
+\item Poišči rezultat z rangom 8 (od najslabšega).
+\item Koliko \% učencev je doseglo več kot 22 točk?
+\item Kateri rezultat (ali rezultati) se najpogosteje pojavlja?
+\item Rezultate testiranja razvrsti v frekvenčno porazdelitev.
+\item Podatke prikaži grafično.
+\end{enumerate}
+\end{Vaje}
 
-Data visualization is the graphic representation of data. It involves producing images that communicate relationships among the represented data to viewers of the images. Visualization makes it easier to detect patterns, trends, and outliers in groups of data.
+\begin{Vaje}{2} 
+        Skupino desetih učencev smo testirali s psihodiagnostičnim testom in dobili naslednje rezultate:
+        \[
+        \begin{array}{cccccccccc}
+        17 & 26 & 22 & 15 & 18 & 27 & 16 & 20 & 18 & 24 \\
+        \end{array}
+        \]
+        
+        \begin{enumerate}
+            \item Izračunaj kvartile.
+            \item Določi kvantilni rang vrednosti $x = 22.50$.
+            \item Določi kvantilni rang rezultata $x = 22.00$.
+        \end{enumerate}
+\end{Vaje}
 
-\columnbreak
-
-\textbf{Python Example:}
-
-\begin{verbatim}
-import seaborn as sns
-import pandas as pd
-
-# Load an example dataset
-data = sns.load_dataset("iris")
-
-# Create a pairplot
-sns.pairplot(data, hue="species")
-plt.show()
-\end{verbatim}
-\end{multicols}
+\begin{Vaje}{3}
+    Na eni izmed avtošol smo se pozanimali, Koliko ur vožnje so kandidati potrebovali, preden so uspešno opravili vozniški izpit. Izračunaj aritmetično sredino, varianco in standardni odklon.
+\end{Vaje}
