@@ -1,8 +1,8 @@
-\section{Multivariantna statistika}
+\chapter{Multivariantna statistika}
 
-Povezanost med spremenljivkama ne pomeni nujno, da med njima obstaja vzročna povezava. Spremenljivke so lahko povezane tudi navidezno in jih pojasni uvedba tretje spremenljivke (npr. poletni čas pojasni povezavo med napadi morskih psov in prodajo sladoleda).
+Povezanost med spremenljivkama ne pomeni nujno, da med njima obstaja vzročna povezava. Spremenljivke so lahko povezane tudi navidezno, pri čemer se pojasni uvedba tretje spremenljivke (npr. poletni čas pojasni povezavo med napadi morskih psov in prodajo sladoleda).
 
-\subsection*{Multipla regresijska analiza (linearna)}
+\section{Multipla regresijska analiza (linearna)}
 
 Multipla regresijska analiza je metoda za preučevanje razmerja med odvisno spremenljivko in dvema ali več neodvisnimi spremenljivkami. Namen je napovedovanje vrednosti odvisne spremenljivke z nizom neodvisnih spremenljivk.
 
@@ -11,7 +11,7 @@ Regresijski model je podan kot:
 
 Delež variabilnosti, ki ga model pojasni, je izražen z $R^2$. Velikost vzorca naj bo vsaj 10-krat večja od števila neodvisnih spremenljivk.
 
-Predpostavke multiple linearne regresije:
+\paragraph{Predpostavke multiple linearne regresije}
 \begin{itemize}
     \item \textbf{Neodvisnost}: Opazovanja so neodvisna.
     \item \textbf{Normalnost}: Napake v regresijskem modelu so normalno porazdeljene.
@@ -19,20 +19,19 @@ Predpostavke multiple linearne regresije:
     \item \textbf{Linearnost}: Obstaja linearna povezava med odvisno in neodvisnimi spremenljivkami.
 \end{itemize}
 
-\subsection*{Multipla regresijska analiza (logistična)}
+\section{Multipla regresijska analiza (logistična)}
 
 Logistična regresija se uporablja, kadar je odvisna spremenljivka nominalna. Namesto linearne funkcije se uporablja logistična funkcija, ki omogoča napovedovanje kategorije odvisne spremenljivke.
 
 Logistični model je podan kot:
 \[\text{logit}(p) = \log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1 X_1 + \ldots + \beta_k X_k,\]
-
 kjer je $p$ verjetnost, da se odvisna spremenljivka pojavi v določeni kategoriji.
 
-\subsection*{Razvrščanje v skupine (clustering)}
+\section{Razvrščanje v skupine (clustering)}
 
-Razvrščanje v skupine ali clustering je metoda za razdelitev podatkov v več homogenih skupin na podlagi podobnosti med posameznimi podatkovnimi točkami. Najpogostejše metode vključujejo k-means, hierarhično razvrščanje in DBSCAN.
+Razvrščanje v skupine ali clustering je metoda za razdelitev podatkov v več homogenih skupin na podlagi podobnosti med posameznimi podatkovnimi točkami. Najpogostejše metode vključujejo \textbf{k-means}, \textbf{hierarhično razvrščanje} in \textbf{DBSCAN}.
 
-\subsection*{Metode zmanjšanja dimenzionalnosti podatkov}
+\section{Metode zmanjšanja dimenzionalnosti podatkov}
 
 \textbf{Analiza glavnih komponent (PCA)}:
 PCA je tehnika za zmanjšanje dimenzionalnosti podatkov, ki pretvori več povezanih spremenljivk v manj nepovezanih komponent. To omogoča lažjo vizualizacijo in analizo podatkov.
@@ -40,12 +39,44 @@ PCA je tehnika za zmanjšanje dimenzionalnosti podatkov, ki pretvori več poveza
 \textbf{Faktorska analiza}:
 Faktorska analiza identificira latentne spremenljivke ali faktorje, ki pojasnjujejo vzorce korelacij med opazovanimi spremenljivkami. Faktorji so teoretične konstrukte, ki so lahko osnovni vzroki za opazovane korelacije.
 
-\subsection*{Analiza zanesljivosti}
+\section{Analiza zanesljivosti}
 
 \textbf{Cronbachov $\alpha$ koeficient}:
 Cronbachov $\alpha$ koeficient je mera za notranjo konsistenco (zanesljivost) skale ali vprašalnika. Visoka vrednost $\alpha$ (bližje 1) nakazuje na visoko zanesljivost skale.
 
-\subsection*{Druge multivariantne metode}
+\subsection*{Formula za izračun Cronbachovega $\alpha$ koeficienta}
+
+Cronbachov $\alpha$ se izračuna s pomočjo naslednje formule:
+
+\[\alpha = \frac{k}{k - 1} \left(1 - \frac{\sum_{i=1}^{k} \sigma^2_{i}}{\sigma^2_{\text{skupaj}}}\right),\]
+
+kjer:
+\begin{itemize}
+    \item $k$ je število postavk (vprašanj) v lestvici,
+    \item $\sigma^2_{i}$ je varianca posamezne postavke,
+    \item $\sigma^2_{\text{skupaj}}$ je varianca celotne lestvice (skupne ocene).
+\end{itemize}
+
+\subsection*{Interpretacija Cronbachovega $\alpha$}
+
+\begin{itemize}
+    \item $\alpha \geq 0.9$: Odlična (zelo visoka) zanesljivost
+    \item $0.8 \leq \alpha < 0.9$: Dobra zanesljivost
+    \item $0.7 \leq \alpha < 0.8$: Sprejemljiva zanesljivost
+    \item $0.6 \leq \alpha < 0.7$: Vprašljiva zanesljivost
+    \item $0.5 \leq \alpha < 0.6$: Slaba zanesljivost
+    \item $\alpha < 0.5$: Nesprejemljiva zanesljivost
+\end{itemize}
+
+\subsection*{Pomembne točke}
+
+\begin{itemize}
+    \item \textbf{Uporaba Cronbachovega $\alpha$}: Najpogosteje se uporablja v psihometriji, pri preučevanju zanesljivosti vprašalnikov in testov. Pomembno je, da je lestvica homogena, kar pomeni, da vse postavke merijo en sam koncept.
+    \item \textbf{Omejitve Cronbachovega $\alpha$}: Čeprav je $\alpha$ priljubljena mera, ni popolna. Visoka vrednost $\alpha$ ne pomeni nujno, da lestvica meri tisto, kar namerava meriti (validnost). Poleg tega lahko visoka vrednost $\alpha$ nastane tudi zaradi velikega števila postavk, ne pa nujno zaradi dejanske notranje konsistence.
+    \item \textbf{Alternativne mere}: V nekaterih primerih se uporabljajo tudi druge mere zanesljivosti, kot je McDonaldov $\omega$, ki lahko poda natančnejšo sliko zanesljivosti v primerih, ko so postavke lestvice med seboj različno povezane.
+\end{itemize}
+
+\section{Druge multivariantne metode}
 
 \textbf{Kanonična korelacijska analiza}:
 Kanonična korelacijska analiza je metoda za preučevanje povezave med dvema sklopoma spremenljivk. Omogoča določitev linearnih kombinacij spremenljivk iz obeh sklopov, ki so medsebojno najbolj povezane.
@@ -57,5 +88,5 @@ Diskriminantna analiza je tehnika za razvrščanje opazovanj v predhodno določe
 Strukturni modeli so kompleksni statistični modeli, ki omogočajo preučevanje vzročnih odnosov med več spremenljivkami. Združujejo elemente regresijske analize, faktorske analize in poti.
 
 \begin{Vaje}{1}
-    ...
+    V datoteki ... združi stolpce ... v eno spremenljivko ... in določi notranjo konsistentnost vprašalnika.
 \end{Vaje}

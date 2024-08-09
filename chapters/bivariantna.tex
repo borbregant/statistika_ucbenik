@@ -1,8 +1,8 @@
-\section{Bivariantna statistika}
+\chapter{Bivariantna analiza}
 
-\subsection*{T-test}
+\section{T-test}
 
-\subsubsection*{T-test za (parne) odvisne vzorce}
+\subsection{T-test za (parne) odvisne vzorce}
 
 Primerjava povprečij dveh pogojev, v katerih so sodelovale iste enote.
 
@@ -24,13 +24,12 @@ Izračun:
     \item Standardna napaka povprečne razlike: $SE(\bar{d}) = \frac{s_d}{\sqrt{n}}$.
     \item T-statistika: $t = \frac{\bar{d}}{SE(\bar{d})}$ (empirična vrednost); $df = n-1$.
     \item V tabeli poiščemo kritično vrednost pri $\alpha = 5\%$.
-    \item Empirična vrednost $t$ pade v kritično območje, ki ga določa teoretična vrednost $t$ pri dani stopnji zaupanja, zato lahko zavrnemo ničelno hipotezo in sprejmemo alternativno..... Napiši kaj če ne pade v kritično pade!!!!
+    \item Empirična vrednost $t$ pade v kritično območje, ki ga določa teoretična vrednost $t$ pri dani stopnji zaupanja, zato lahko zavrnemo ničelno hipotezo in sprejmemo alternativno. Napiši kaj, če ne pade v kritično območje!
     \item Interval zaupanja za resnično vrednost razlike povprečij je: 
         \[\bar{d} \pm (t \cdot SE(\bar{d}))\]
 \end{enumerate}
 
-
-\subsubsection*{T-test za neodvisne vzorce}
+\subsection{T-test za neodvisne vzorce}
 
 Primerjava preizkusa domneve o srednjih vrednosti dveh skupin enot.
 
@@ -60,11 +59,11 @@ Izračun:
         \[\bar{x}_1 - \bar{x}_2 \pm (t \cdot SE(\bar{x}_1 - \bar{x}_2))\]
 \end{enumerate}
 
-\subsection*{Analiza variance (ANOVA)}
+\section{Analiza variance (ANOVA)}
 
-Primerjava povprečij večih skupin (če dve skupini je ANOVA enaka T testu).
+Primerjava povprečij večih skupin (če sta samo dve skupini, je ANOVA enaka T testu).
 
-$F$ porazdelitev ima dve prostorski skopnji
+$F$ porazdelitev ima dve prostorski skopnji.
 
 Slika variance between and within.
 
@@ -102,7 +101,7 @@ Izračun:
         \[ \eta = \sqrt{\eta^2} = \sqrt{0,38} \approx 0,62\]
 \end{enumerate}
 
-\subsection*{Neparametrične alternative}
+\section{Neparametrične alternative}
 
 Če podatki niso normalno porazdeljeni, moramo parametrični test zamenjati z ustreznim neparametričnim testom.
 
@@ -118,7 +117,7 @@ Izračun:
     \caption{Pregled parametričnih in neparametričnih testov}
 \end{table}
 
-\subsubsection*{Hi-kvadrat test}
+\subsection{Hi-kvadrat test}
 
 Uporablja se za ugotavljanje, ali obstaja statistično značilna razlika med pričakovanimi in opazovanimi frekvencami v eni ali več kategorijah (torej če imamo nomilane spremenljivke)
 
@@ -144,7 +143,7 @@ Ker vrednosti hi-kvadrat same po sebi niso primerljive med različnimi tabelami,
 \[V = \sqrt{\frac{\chi^2}{N \cdot (k - 1)}},\]
 kjer je $\chi^2$ hi-kvadrat vrednost, $N$ skupno število opazovanj, $k$ pa število kategorij v najbolj številni spremenljivki.
 
-\subsubsection*{Spearmanov koeficient}
+\subsection{Spearmanov koeficient}
 
 Spearmanov koeficient korelacije meri moč in smer monotone povezave med dvema spremenljivkama. Uporablja se za ordinalne spremenljivke ali za kvantitativne spremenljivke, ki niso nujno normalno porazdeljene.
 
@@ -153,9 +152,7 @@ Med dvema spremenljivkama ni monotone povezave.
 
 \paragraph{Formula:}
 Spearmanov koeficient ($\rho$) se izračuna po formuli:
-\[
-\rho = 1 - \frac{6 \sum d_i^2}{n(n^2 - 1)}
-\]
+\[\rho = 1 - \frac{6 \sum d_i^2}{n(n^2 - 1)},\]
 kjer je $d_i$ razlika med vrstnimi številkami vsakega opazovanja in $n$ število opazovanj.
 
 \paragraph{Postopek izračuna:}
@@ -172,7 +169,7 @@ Spearmanov koeficient se giblje med -1 in 1. Vrednost blizu 1 kaže na močno po
 \paragraph{Zaključek:}
 Spearmanov koeficient je uporaben za analizo povezav med ordinalnimi ali kvantitativnimi spremenljivkami, ki niso normalno porazdeljene. Pomaga nam razumeti moč in smer monotone povezave med spremenljivkami.
 
-\subsubsection*{Pearsonov koeficient}
+\subsection{Pearsonov koeficient}
 
 Pearsonov koeficient korelacije meri linearno povezanost med dvema kvantitativnima spremenljivkama. Uporablja se za intervalne ali razmerne spremenljivke, ki so normalno porazdeljene.
 
@@ -196,7 +193,7 @@ kjer je $x_i$ in $y_i$ vsaka opazovanja za spremenljivki $x$ in $y$, $\bar{x}$ i
 \paragraph{Interpretacija:}
 Pearsonov koeficient se giblje med -1 in 1. Vrednost blizu 1 kaže na močno pozitivno linearno povezavo, vrednost blizu -1 kaže na močno negativno linearno povezavo, vrednost blizu 0 pa kaže na odsotnost linearne povezave.
 
-\subsection*{Povezanost}
+\section{Povezanost}
 
 Povezanost med dvema spremenljivkama pomeni, da spremembe v eni spremenljivki sovpadajo s spremembami v drugi spremenljivki. Povezanost lahko merimo na različne načine, odvisno od narave spremenljivk in vrste povezave.
 
@@ -206,30 +203,30 @@ Funkcionalna povezanost pomeni, da obstaja točno določena matematična funkcij
 \subsection*{Korelacijska povezanost}
 Korelacijska povezanost meri stopnjo in smer linearne povezave med dvema kvantitativnima spremenljivkama. Najpogosteje uporabljamo Pearsonov koeficient korelacije ($r$), ki meri linearno povezanost, in Spearmanov koeficient korelacije ($\rho$), ki meri monotono povezanost.
 
-\subsubsection*{Močna in šibka povezanost}
+\subsection*{Močna in šibka povezanost}
 Moč povezanosti se nanaša na velikost koeficienta korelacije. 
 \begin{itemize}
     \item \textbf{Močna povezanost}: Koeficient korelacije blizu 1 ali -1 kaže na močno povezanost.
     \item \textbf{Šibka povezanost}: Koeficient korelacije blizu 0 kaže na šibko povezanost.
 \end{itemize}
 
-\subsubsection*{Linearna in nelinearna povezanost}
+\subsection*{Linearna in nelinearna povezanost}
 \begin{itemize}
     \item \textbf{Linearna povezanost}: Povezanost, kjer lahko povezavo med spremenljivkama najbolje opišemo z ravno črto. Pearsonov koeficient korelacije ($r$) je primeren za merjenje linearne povezanosti.
     \item \textbf{Nelinearna povezanost}: Povezanost, kjer je povezava med spremenljivkama bolj zapletena in je ni mogoče opisati z ravno črto. Spearmanov koeficient korelacije ($\rho$) je primeren za merjenje monotone (nelinearne) povezanosti.
 \end{itemize}
 
-\subsubsection*{Pozitivna in negativna povezanost}
+\subsection*{Pozitivna in negativna povezanost}
 \begin{itemize}
     \item \textbf{Pozitivna povezanost}: Ko se ena spremenljivka povečuje, se druga spremenljivka tudi povečuje. Koeficient korelacije je pozitiven.
     \item \textbf{Negativna povezanost}: Ko se ena spremenljivka povečuje, se druga spremenljivka zmanjšuje. Koeficient korelacije je negativen.
 \end{itemize}
 
-\subsection*{Kovarianca}
+\subsection{Kovarianca}
 
 Kovarianca je mera, ki opisuje, kako se dve spremenljivki sočasno spreminjata. Pozitivna kovarianca pomeni, da se večje vrednosti ene spremenljivke povezujejo z večjimi vrednostmi druge spremenljivke, medtem ko negativna kovarianca pomeni, da se večje vrednosti ene spremenljivke povezujejo z manjšimi vrednostmi druge spremenljivke.
 
-\subsection*{Formula}
+\paragraph{Formula}
 Kovarianca dveh spremenljivk $X$ in $Y$ se izračuna po formuli:
 \[\text{Cov}(X, Y) = \frac{1}{n-1} \sum_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y}),\]
 kjer:
@@ -239,17 +236,23 @@ kjer:
     \item $n$ je število opazovanj.
 \end{itemize}
 
-\subsubsection*{Interpretacija}
+\paragraph{Interpretacija}
 \begin{itemize}
     \item \textbf{Pozitivna kovarianca}: Ko se vrednosti ene spremenljivke povečujejo, se povečujejo tudi vrednosti druge spremenljivke.
     \item \textbf{Negativna kovarianca}: Ko se vrednosti ene spremenljivke povečujejo, se vrednosti druge spremenljivke zmanjšujejo.
     \item \textbf{Kovarianca blizu nič}: Ni jasno izražene povezave med spremenljivkama.
 \end{itemize}
 
-\subsubsection*{Razlika med kovarianco in korelacijo}
+\paragraph{Razlika med kovarianco in korelacijo}
+
 Kovarianca meri le smer sočasnih sprememb dveh spremenljivk, vendar ni standardizirana, zato njena vrednost ni omejena. Po drugi strani pa je korelacija standardizirana mera, ki pove, kako močna in v katero smer je linearna povezava med dvema spremenljivkama, njena vrednost pa je vedno med -1 in 1.
 
-
 \begin{Vaje}{1}
-    ...
+    V datoteki \href{https://github.com/borbregant/ai_tandem_learning/blob/main/data_cleaned.xlsx}{data\_cleaned.xlsx} določi naslednje:
+    \begin{itemize}
+        \item Ali obstaja povezava med matematično anksioznostjo in motivacijo za matematiko? Če je povezava znatna, določi še enačbo linearne regresije, kjer si sam izbereš odvisno in neodvisno spremenljivko.
+        \item Ali obstaja povezava med spolom in anksioznostjo?
+        \item Ali obstaja povezava med profesorjem in razredom?
+    \end{itemize}
+    Imej v mislih, da so kategorične spremenljivke v dokumentu kodirane označevalno.
 \end{Vaje}
