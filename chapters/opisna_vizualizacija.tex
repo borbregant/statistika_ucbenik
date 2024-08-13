@@ -2,7 +2,33 @@
 
 \section{Absolutna, relativna in grupirana frekvenčna porazdelitev}
 
-\section{Grafična predstavitev frelvenčnih porazdelitev za nominalne in ordinalne spremenljivke}
+\begin{itemize}
+    \item \textbf{Frekvenčna porazdelitev} je matematična funkcija, ki prikazuje število primerov, v katerih spremenljivka zavzame vsako od svojih možnih vrednosti.
+    \item \textbf{Frekvenca} je število pojavov podatkovne vrednosti.
+    \item \textbf{Relativna frekvenca} je odstotek enot med vsemi enotami, ki imajo določeno vrednost spremenljivke, in se izračuna tako, da se absolutna frekvenca deli s številom vseh enot.
+\end{itemize}
+
+\textbf{Primer}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|>{\raggedright\arraybackslash}p{3cm}|>{\raggedright\arraybackslash}p{3cm}|>{\raggedright\arraybackslash}p{3cm}|}
+\hline
+\textbf{$x_i$} & \textbf{$f_i$} & \textbf{$f_i$ (\%)} \\ \hline
+Koper & 60 & 20 \\ \hline
+Izola & 150 & 50 \\ \hline
+Piran & 90 & 30 \\ \hline
+\textbf{Skupaj} & \textbf{300} & \textbf{100} \\ \hline
+\end{tabular}
+\caption{Relativna frekvenca najljubših slovenskih obalnih mest. Enota je turist, spremenljivka pa najljubše slovensko obalno mesto.}
+\end{table}
+
+
+Kumulativna frekvenca je seštevek vseh frekvenc za določene vrednosti spremenljivke do vključno določene vrednosti. Prikazuje, koliko primerov ima vrednost spremenljivke manjšo ali enako določeni vrednosti. Kumulativna frekvenca je koristna za prikazovanje porazdelitve podatkov in ugotavljanje, koliko enot dosega ali presega določeno vrednost.
+
+Grupirane frekvence se uporabljajo, kadar so podatki razdeljeni v skupine ali razrede. Namesto da bi beležili frekvence za vsako posamezno vrednost, združimo vrednosti v skupine, kar omogoča bolj pregledno analizo podatkov, še posebej pri velikih naborih podatkov. Relativne frekvence se lahko izračunajo tudi za te skupine, da dobimo odstotek primerov v vsaki skupini.
+
+\section{Grafična predstavitev frekvenčnih porazdelitev za nominalne in ordinalne spremenljivke}
 
 Stolpčni grafikon prikazuje frekvence posameznih kategorij z navpičnimi ali vodoravnimi stolpci, kjer višina oziroma dolžina stolpca predstavlja frekvenco določene kategorije. Prednost stolpčnih grafikonov je v tem, da omogočajo enostavno primerjavo med kategorijami in so primernejši za prikaz večjih množic podatkov od tortnega grafikona.
 
@@ -11,14 +37,14 @@ Stolpčni grafikon prikazuje frekvence posameznih kategorij z navpičnimi ali vo
     \begin{tikzpicture}
     \begin{axis}[
         ybar,
-        symbolic x coords={Kategorija A, Kategorija B, Kategorija C, Kategorija D},
+        symbolic x coords={A, B, C, D},
         xtick=data,
         ymin=0,
         ylabel={Frekvenca},
         xlabel={Kategorija},
         nodes near coords,
         ]
-    \addplot coordinates {(Kategorija A, 10) (Kategorija B, 20) (Kategorija C, 15) (Kategorija D, 5)};
+    \addplot coordinates {(A, 10) (B, 20) (C, 15) (D, 5)};
     \end{axis}
     \end{tikzpicture}
     \caption{Stolpčni grafikon frekvenc za nominalne spremenljivke.}
@@ -51,7 +77,7 @@ Poligon frekvenc je črtni grafikon, ki povezuje sosednje točke, ki predstavlja
         ylabel={Frekvenca},
         xlabel={Interval},
         ]
-    \addplot coordinates {(0, 1) (1, 3) (2, 5) (3, 4) (4, 2)} -- cycle;
+    \addplot coordinates {(0, 1) (1, 3) (2, 5) (3, 4) (4, 2)};
     \end{axis}
     \end{tikzpicture}
     \caption{Poligon frekvenc za intervalne spremenljivke.}
@@ -109,8 +135,10 @@ kjer je $\mu$ povprečje (aritmetična sredina) in $\sigma$ standardni odklon. G
 
 Asimetričnost meri, kako je porazdelitev nagnjena v levo ali desno. Normalna porazdelitev je popolnoma simetrična in ima koeficient asimetričnosti $k = 0$. Vendar pa v realnih podatkih pogosto srečamo porazdelitve, ki niso povsem simetrične:
 
-- **Negativna asimetričnost (v levo, $k < 0$)**: Rep porazdelitve je daljši na levi strani.
-- **Pozitivna asimetričnost (v desno, $k > 0$)**: Rep porazdelitve je daljši na desni strani.
+\begin{itemize}
+    \item Negativna asimetričnost (v levo, $k < 0$)**: Rep porazdelitve je daljši na levi strani.
+    \item Pozitivna asimetričnost (v desno, $k > 0$)**: Rep porazdelitve je daljši na desni strani.
+\end{itemize}
 
 Če je $k$ med -1 in 1, se porazdelitev še vedno lahko šteje za normalno.
 
@@ -275,6 +303,59 @@ V kolikšni meri se vrednosti razlikujejo med seboj ter razlikujejo in odstopajo
         \item Dve spremenljivki z različnima merskima enotama.
     \end{itemize}
 \end{itemize}
+
+\subsection*{Razpon}
+
+Absolutni razpon $R_{abs}=x_{max}-x_{min}$
+
+Relativni razpon $R_{rel}=\frac{2\left(x_{max}-x_{min}\right)}{x_{max}+x_{min}}$
+
+\subsection*{Interkvartilni rang}
+
+$IQR =\frac{Q_3 -Q_1}{2}$
+
+\subsection*{Absolutna deviacija mediane/aritmetične sredine}
+
+$AD_{Me,\mu}=\frac{1}{N}\sum_{i=1}^{N}|x_i - Me,\mu|$
+
+\subsection*{Varianca in standardni odklon}
+
+\[\sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2\]
+
+\[\sigma = \sqrt{\sigma^2}\]
+
+\subsection*{Variabilnost normalne porazdelitve}
+
+Slika naslednjega
+
+\begin{itemize}
+    \item 68,3\% enot je znotraj enega standardnega odklona od povprečja \([\mu - \sigma, \mu + \sigma]\)
+    \item 95,4\% enot je znotraj dveh standardnih odklonov od povprečja \([\mu - 2\sigma, \mu + 2\sigma]\)
+    \item 99,7\% enot je znotraj treh standardnih odklonov od povprečja \([\mu - 3\sigma, \mu + 3\sigma]\)
+\end{itemize}
+
+\subsection*{Standardizacija}
+
+\[z_i = \frac{x_i - \mu_X}{\sigma_X}\]
+
+Rezultat je standardizirana spremenljivka $Z$, kjer standardizirane vrednosti $z_i$ predstavljajo relativna odstopanja od aritmetične sredine. Standardizacija nam omogoča primerjavo vrednosti različnih spremenljivk, ki praviloma niso primerljive.
+
+Primer primerjave teže in višine dojenčkov, kjer standardiziramo glede na spol.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{cccccc}
+    \toprule
+    Dojenček & Spol & Teža (kg) & $\mu_X$ (kg) & $\sigma_X$ (kg) & $z_i$ \\
+    \midrule
+    1 & Moški & 3.5 & 3.4 & 0.5 & $z_1 = \frac{3.5 - 3.4}{0.5} = 0.2$ \\
+    2 & Ženski & 3.0 & 3.2 & 0.4 & $z_2 = \frac{3.0 - 3.2}{0.4} = -0.5$ \\
+    3 & Moški & 4.0 & 3.4 & 0.5 & $z_3 = \frac{4.0 - 3.4}{0.5} = 1.2$ \\
+    4 & Ženski & 2.8 & 3.2 & 0.4 & $z_4 = \frac{2.8 - 3.2}{0.4} = -1.0$ \\
+    \bottomrule
+    \end{tabular}
+    \caption{Standardizacija teže dojenčkov glede na spol.}
+\end{table}
 
 \begin{Vaje}{1}
     Učence smo testirali v znanju matematike in dosegli so naslednje rezultate:

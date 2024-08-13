@@ -18,7 +18,7 @@ Je postopek izbire dela populacije, ki jo vključimo v raziskavo. Enote, ki so �
     \item \textbf{Neverjetnostni vzorci}: Verjetnosti izbir ne moremo izračunati.
     \begin{itemize}
         \item \textit{Priložnostni vzorci}: Primer: Državljanom pošljemo 1 milijon vprašalnikov. (slabo)
-        \item Ekspertna izbira
+        \item \textit{Ekspertna izbira}: Vzorec, ki naj bi bil reprezentativen izbere strokovnjak področja raziskave.
         \item \textit{Kvotno vzorčenje}: Primer: Med vzorčenjem nadziramo demografske značilnosti vzorca.
     \end{itemize}
     Nauk: Velikost vzorca ni vse. Pomembnejša je njegova reprezentativnost. V idealni situaciji bi uporabljali verjetnostno vzorčenje. Ko to ni možno, je kvotno vzorčenje boljša izbira kot priložnostno.\\
@@ -71,7 +71,14 @@ Alternativno hipotezo $H_1$ preverimo le posredno: če ničelne hipoteze ne more
 
 Primer: Ničelna hipoteza: Med ženskami in moškimi ni razlike v sposobnosti večopravilnosti. Alternativna hipoteza: Obstajajo razlike v sposobnosti večopravilnosti med ženskami in moškimi (dvostranski test). Alternativna hipoteza: Ženske so boljše pri večopravilnosti kot moški (enostransko testiranje)
 
-Dve vrsti napake.
+V statistiki ločimo med dvema vrstama napak, ki ju lahko naredimo pri testiranju hipotez:
+\begin{itemize}
+    \item \textbf{Napaka prve vrste ($\alpha$-napaka):} To je napaka, ki jo naredimo, ko zavrnemo ničelno hipotezo ($H_0$), čeprav je v resnici resnična. Gre torej za "lažno pozitivni" rezultat. Verjetnost, da se zgodi napaka prve vrste, imenujemo raven značilnosti $\alpha$, ki je običajno nastavljena na 0,05 ali 5 \%. To pomeni, da obstaja 5-odstotna možnost, da napačno zavrnemo resnično ničelno hipotezo.
+    \item \textbf{Napaka druge vrste ($\beta$-napaka):} To je napaka, ki jo naredimo, ko ne zavrnemo ničelne hipoteze ($H_0$), čeprav je v resnici napačna. Gre za "lažno negativni" rezultat. Verjetnost, da se zgodi napaka druge vrste, označujemo z $\beta$. Komplement te verjetnosti $(1-\beta)$ predstavlja moč testa, ki je verjetnost, da bomo pravilno zavrnili napačno ničelno hipotezo.
+\end{itemize}
+
+V praksi se moramo zavedati, da je zmanjšanje verjetnosti ene vrste napake običajno povezano s povečanjem verjetnosti druge vrste napake, zato je pomembno, da testiranje hipotez izvedemo premišljeno in uravnotežimo tveganja za obe vrsti napak.
+
 
 \subsection*{Stopnja značilnosti}
 
