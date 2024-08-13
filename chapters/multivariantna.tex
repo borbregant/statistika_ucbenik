@@ -7,9 +7,36 @@ Povezanost med spremenljivkama ne pomeni nujno, da med njima obstaja vzročna po
 Multipla regresijska analiza je metoda za preučevanje razmerja med odvisno spremenljivko in dvema ali več neodvisnimi spremenljivkami. Namen je napovedovanje vrednosti odvisne spremenljivke z nizom neodvisnih spremenljivk.
 
 Regresijski model je podan kot:
-\[Y = \beta_0 + \beta_1 X_1 + \ldots + \beta_k X_k\]
+\[Y = \beta_0 + \beta_1 X_1 + \ldots + \beta_k X_k,\]
+kjer je:
+\begin{itemize}
+    \item $Y$ odvisna spremenljivka,
+    \item $X_1, \ldots, X_k$ neodvisne spremenljivke,
+    \item $\beta_0$ presečišče (intercept),
+    \item $\beta_1, \ldots, \beta_k$ regresijski koeficienti, ki kažejo na spremembo v $Y$ pri enotni spremembi $X_i$,
+    \item $\epsilon$ napaka modela.
+\end{itemize}
 
-Delež variabilnosti, ki ga model pojasni, je izražen z $R^2$. Velikost vzorca naj bo vsaj 10-krat večja od števila neodvisnih spremenljivk.
+\paragraph{Izračun koeficientov $\beta_i$}
+Regresijski koeficienti $\beta_i$ se izračunajo z metodo najmanjših kvadratov, ki minimizira vsoto kvadratov odstopanj predvidenih vrednosti od dejanskih vrednosti:
+\[
+\hat{\beta} = (X'X)^{-1}X'Y
+\]
+kjer je $X$ matrica neodvisnih spremenljivk, $Y$ pa vektor odvisne spremenljivke.
+
+\paragraph{Koeficient determinacije $R^2$}
+Delež variabilnosti, ki ga model pojasni, je izražen z $R^2$, ki ga izračunamo kot:
+\[R^2 = 1 - \frac{\sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2}{\sum_{i=1}^{n} (Y_i - \bar{Y})^2},\]
+kjer:
+\begin{itemize}
+    \item $\hat{Y}_i$ so napovedane vrednosti odvisne spremenljivke,
+    \item $Y_i$ so dejanske vrednosti odvisne spremenljivke,
+    \item $\bar{Y}$ je povprečje odvisne spremenljivke.
+\end{itemize}
+
+$R^2$ meri delež skupne variabilnosti v odvisni spremenljivki, ki jo je mogoče pojasniti z regresijskim modelom. Vrednost $R^2$ se giblje med 0 in 1, pri čemer 1 pomeni popolno prileganje modela podatkom.
+
+Pomembno je, da velikost vzorca zadostuje za stabilnost ocenjenih koeficientov. Priporočeno je, da je velikost vzorca vsaj 10-krat večja od števila neodvisnih spremenljivk.
 
 \paragraph{Predpostavke multiple linearne regresije}
 \begin{itemize}
@@ -19,17 +46,63 @@ Delež variabilnosti, ki ga model pojasni, je izražen z $R^2$. Velikost vzorca 
     \item \textbf{Linearnost}: Obstaja linearna povezava med odvisno in neodvisnimi spremenljivkami.
 \end{itemize}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pictures/regresija.png}
+    \caption{2D regresijski model, ki ga bomo seveda spremenili v avtorsko delo.}
+    \label{fig:regresija}
+\end{figure}
+
 \section{Multipla regresijska analiza (logistična)}
 
-Logistična regresija se uporablja, kadar je odvisna spremenljivka nominalna. Namesto linearne funkcije se uporablja logistična funkcija, ki omogoča napovedovanje kategorije odvisne spremenljivke.
+Logistična regresija se uporablja, kadar je odvisna spremenljivka nominalna (ali binarna). Namesto linearne funkcije se uporablja logistična funkcija, ki omogoča napovedovanje kategorije odvisne spremenljivke.
 
 Logistični model je podan kot:
 \[\text{logit}(p) = \log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1 X_1 + \ldots + \beta_k X_k,\]
 kjer je $p$ verjetnost, da se odvisna spremenljivka pojavi v določeni kategoriji.
 
+\paragraph{Izračun koeficientov $\beta_i$}
+Regresijski koeficienti $\beta_i$ se izračunajo z metodo največjega verjetja (Maximum Likelihood Estimation, MLE), ki išče koeficiente, ki maksimizirajo verjetnost opazovanih podatkov glede na model.
+
+\paragraph{Interpretacija koeficientov $\beta_i$}
+Koeficient $\beta_i$ predstavlja spremembo v logit(p) (logaritmu verjetnostnega razmerja) za enoto spremembe v $X_i$. Eksponentiranje koeficientov daje t.i. \emph{odds ratio} (razmerje verjetnosti):
+\[\text{OR} = e^{\beta_i}\]
+Odnos razmerja verjetnosti razlaga, kako se verjetnost pojavitve dogodka spremeni z enoto spremembe v $X_i$. Če je $\text{OR} > 1$, se verjetnost dogodka poveča, če je $\text{OR} < 1$, se verjetnost zmanjša.
+
+\paragraph{Pseudo-$R^2$}
+Za oceno kakovosti prileganja modela se v logistični regresiji pogosto uporablja t.i. pseudo-$R^2$. Ena izmed pogosto uporabljenih formul je McFaddenov pseudo-$R^2$:
+\[R^2_{\text{McFadden}} = 1 - \frac{\log L_{\text{model}}}{\log L_{\text{null}}}\]
+kjer je:
+\begin{itemize}
+    \item $\log L_{\text{model}}$ logaritmična verjetnost ustreznosti modela,
+    \item $\log L_{\text{null}}$ logaritmična verjetnost modela brez neodvisnih spremenljivk (samo z interceptom).
+\end{itemize}
+
+McFaddenov pseudo-$R^2$ se giblje med 0 in 1, pri čemer višje vrednosti nakazujejo boljše prileganje modela.
+
+\paragraph{Predpostavke logistične regresije}
+\begin{itemize}
+    \item \textbf{Neodvisnost opazovanj}: Vsako opazovanje mora biti neodvisno od drugih.
+    \item \textbf{Neprekinjenost neodvisnih spremenljivk}: Neodvisne spremenljivke morajo biti kontinuirane ali binarne.
+    \item \textbf{Linearnost logit transformacije}: Obstajati mora linearna povezava med logit(p) in neodvisnimi spremenljivkami.
+\end{itemize}
+
 \section{Razvrščanje v skupine (clustering)}
 
-Razvrščanje v skupine ali clustering je metoda za razdelitev podatkov v več homogenih skupin na podlagi podobnosti med posameznimi podatkovnimi točkami. Najpogostejše metode vključujejo \textbf{k-means}, \textbf{hierarhično razvrščanje} in \textbf{DBSCAN}.
+Razvrščanje v skupine ali clustering je metoda za razdelitev podatkov v več homogenih skupin na podlagi podobnosti med posameznimi podatkovnimi točkami. Najpogostejše metode vključujejo \textit{k-means}, \textit{hierarhično razvrščanje} in \textit{DBSCAN}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pictures/clustering.png}
+    \caption{clustering, ki ga bomo seveda spremenili v avtorsko delo.}
+    \label{fig:clustering}
+\end{figure}
+
+
+\paragraph{K-means clustering}
+\textit{K-means} je ena najpogosteje uporabljenih metod za razvrščanje v skupine. Cilj algoritma je razdeliti podatke na $k$ skupin tako, da se minimizira vsota kvadratov odstopanj podatkovnih točk od njihovega pripadajočega centroida (povprečne vrednosti v skupini). Algoritem iterativno prilagaja centroidi do konvergence:
+\[\text{min} \sum_{i=1}^{k} \sum_{x \in C_i} \| x - \mu_i \|^2,\]
+kjer je $C_i$ skupina in $\mu_i$ centroid skupine $i$.
 
 \section{Metode zmanjšanja dimenzionalnosti podatkov}
 
@@ -37,7 +110,16 @@ Razvrščanje v skupine ali clustering je metoda za razdelitev podatkov v več h
 PCA je tehnika za zmanjšanje dimenzionalnosti podatkov, ki pretvori več povezanih spremenljivk v manj nepovezanih komponent. To omogoča lažjo vizualizacijo in analizo podatkov.
 
 \textbf{Faktorska analiza}:
-Faktorska analiza identificira latentne spremenljivke ali faktorje, ki pojasnjujejo vzorce korelacij med opazovanimi spremenljivkami. Faktorji so teoretične konstrukte, ki so lahko osnovni vzroki za opazovane korelacije.
+Faktorska analiza identificira latentne spremenljivke ali faktorje, ki pojasnjujejo vzorce korelacij med opazovanimi spremenljivkami. Model faktorske analize predpostavlja, da vsako opazovano spremenljivko $X_i$ lahko izrazimo kot linearno kombinacijo faktorjev $F_j$ in napake $\epsilon_i$:
+\[X_i = \lambda_{i1} F_1 + \lambda_{i2} F_2 + \ldots + \lambda_{im} F_m + \epsilon_i,\]
+kjer so $\lambda_{ij}$ faktorski uteži, ki kažejo na vpliv faktorja $F_j$ na spremenljivko $X_i$. Faktorska analiza se uporablja za zmanjšanje števila spremenljivk, hkrati pa ohranja interpretabilne latentne strukture.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5 \textwidth]{pictures/faktorska_analiza.png}
+    \caption{faktorska analiza.}
+    \label{fig:faktorska}
+\end{figure}
 
 \section{Analiza zanesljivosti}
 
@@ -78,13 +160,13 @@ kjer:
 
 \section{Druge multivariantne metode}
 
-\textbf{Kanonična korelacijska analiza}:
+\paragraph{Kanonična korelacijska analiza:}
 Kanonična korelacijska analiza je metoda za preučevanje povezave med dvema sklopoma spremenljivk. Omogoča določitev linearnih kombinacij spremenljivk iz obeh sklopov, ki so medsebojno najbolj povezane.
 
-\textbf{Diskriminantna analiza}:
+\paragraph{Diskriminantna analiza:}
 Diskriminantna analiza je tehnika za razvrščanje opazovanj v predhodno določene skupine na podlagi neodvisnih spremenljivk. Uporablja se za napovedovanje kategorijske odvisne spremenljivke.
 
-\textbf{Strukturni modeli}:
+\paragraph{Strukturni modeli:}
 Strukturni modeli so kompleksni statistični modeli, ki omogočajo preučevanje vzročnih odnosov med več spremenljivkami. Združujejo elemente regresijske analize, faktorske analize in poti.
 
 \begin{Vaje}{1}
